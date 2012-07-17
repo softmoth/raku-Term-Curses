@@ -1,0 +1,7 @@
+{
+    "name"        : "Term::Curses",
+    "version"     : "*",
+    "description" : "Terminal-independent character screen I/O library",
+    "depends"     : [ "NativeCall" ],
+    "source-url"  : "git://github.com/softmoth/Term-Curses.git"
+}
