@@ -86,4 +86,4 @@ sub getcury(OpaquePointer) returns int32
 sub getcurx(OpaquePointer) returns int32
     is export is native(%lib<curses>) {}
 
-# vim:set ft=perl6:
+# vim:set ft=raku

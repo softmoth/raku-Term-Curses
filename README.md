@@ -1,12 +1,12 @@
 # Term::Curses
 
-The curses library provides terminal-independent, portable manipuation
-of character screens. This library provides a native-call wrapper around
+The curses library provides terminal-independent, portable manipulation of
+character screens. This Raku module provides a NativeCall wrapper around
 the system ncurses library.
 
 ## Synopsis
 
-```perl6
+```raku
 use Term::Curses;
 
 my $win = Term::Curses.new(:start_color);

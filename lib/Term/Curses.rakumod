@@ -82,4 +82,4 @@ class Term::Curses {
     }
 }
 
-# vim:set ft=perl6:
+# vim:set ft=raku

@@ -1,6 +1,4 @@
-#! /usr/bin/env perl6
-
-use v6;
+#! /usr/bin/env raku
 
 use Term::Curses;
 
@@ -48,4 +46,4 @@ sub messAroundABit($win, :$count = 5, :$delay = 0.1) {
     $win.refresh();
 }
 
-# vim:set ft=perl6:
+# vim:set ft=raku
