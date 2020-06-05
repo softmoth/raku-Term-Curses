@@ -1,7 +1,9 @@
 {
     "name"        : "Term::Curses",
-    "version"     : "*",
+    "version"     : "0.0.1",
     "description" : "Terminal-independent character screen I/O library",
     "depends"     : [ "NativeCall" ],
-    "source-url"  : "git://github.com/softmoth/Term-Curses.git"
+    "source-url"  : "git://github.com/softmoth/p6-Term-Curses.git",
+    "perl"        : "6",
+    "test-depends": [ "Test::META" ]
 }
