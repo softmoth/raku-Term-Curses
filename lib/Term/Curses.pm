@@ -29,11 +29,7 @@ class Term::Curses {
         }
     }
 
-    # RAKUDO: NYI, DESTROY() must be called manually for now
-    method DESTROY() {
-        endwin();
-    }
-
+    method endwin() { endwin() unless isendwin(); }
     method refresh() { wrefresh($!stdscr) }
     method erase() { werase($!stdscr) }
     method clear() { wclear($!stdscr) }
@@ -63,12 +59,11 @@ class Term::Curses {
     method y() is rw {
         my $w := $!stdscr;
         my $s := self;
-        return Proxy.new:
+        Proxy.new:
             FETCH => method () {
                 return getcury($w);
             },
             STORE => method ($val) {
-                #note "Moving {$s.y} to $val, keeping {$s.x}";
                 wmove($w, $val, $s.x);
                 return $val;
             };
@@ -76,7 +71,7 @@ class Term::Curses {
     method x() is rw {
         my $w := $!stdscr;
         my $s := self;
-        return Proxy.new:
+        Proxy.new:
             FETCH => method () {
                 return getcurx($w);
             },

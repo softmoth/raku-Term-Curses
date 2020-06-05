@@ -1,20 +1,29 @@
-module Term::Curses::Raw;
+unit module Term::Curses::Raw;
 
 use NativeCall;
 
 my %lib;
 BEGIN {
-    # TODO: Make this portable, this only works on OS X Zavolaj uses
-    # %*VM<config><load_ext>, which is just ".bundle" on OS X. But OS X has
-    # several possible (incompatible) library extensions to choose from, so
-    # another approach is needed.
-    %lib<c>      = 'libc.dylib';
-    %lib<curses> = 'libcurses.dylib';
+    use LibraryCheck;
+    # NB: Needs testing on various platforms; please open an issue
+    # with any portability concerns
+    my $curses = ((v6, v5) X <ncursesw ncurses curses>)
+            .map(*.reverse.cache)
+            .grep({ library-exists |$_ })
+            .first
+        // ('curses', Version);
+
+    %lib<curses> = $curses;
+    if $curses and $curses.head.starts-with('ncurses') {
+        my $w = $curses.head.ends-with('w') ?? 'w' !! '';
+        for <form menu panel> -> $lib {
+            %lib{$lib} = $lib ~ $w, $curses.tail
+        }
+    }
 }
 
-# RAKUDO: Not sure why, but this is failing with "SORRY! Missing block"
 sub setlocale(int32, Str) returns Str
-    is export is native(%lib<c>) {}
+    is export is native {}
 
 sub initscr() returns OpaquePointer
     is export is native(%lib<curses>) {}
@@ -33,6 +42,9 @@ sub has_colors() returns int32
 sub use_default_colors() returns int32
     is export is native(%lib<curses>) {}
 sub start_color() returns int32
+    is export is native(%lib<curses>) {}
+
+sub isendwin() returns bool
     is export is native(%lib<curses>) {}
 sub endwin()
     is export is native(%lib<curses>) {}
