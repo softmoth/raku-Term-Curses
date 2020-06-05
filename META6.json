@@ -1,10 +1,34 @@
 {
-    "name"        : "Term::Curses",
-    "version"     : "0.0.1",
+    "auth" : "github:softmoth",
+    "authors" : [
+        "Tim Smith"
+    ],
+    "build-depends" : [ ],
+    "depends" : [ "NativeCall" ],
     "description" : "Terminal-independent character screen I/O library",
-    "depends"     : [ "NativeCall" ],
-    "license"     : "Artistic-2.0",
-    "source-url"  : "git://github.com/softmoth/p6-Term-Curses.git",
-    "perl"        : "6",
-    "test-depends": [ "Test::META" ]
+    "license" : "Artistic-2.0",
+    "name" : "Term::Curses",
+    "perl" : "6",
+    "production" : 0,
+    "provides" : {
+        "Term::Curses" : "lib/Term/Curses.rakumod",
+        "Term::Curses::Raw" : "lib/Term/Curses/Raw.rakumod"
+    },
+    "raku" : "6",
+    "resources" : [ ],
+    "source-url" : "git://github.com/softmoth/raku-Term-Curses.git",
+    "support" : {
+        "bugtracker" : "https://github.com/softmoth/raku-Template-Mustache/issues"
+    },
+    "tags" : [
+        "curses",
+        "ncurses",
+        "terminal",
+        "tui"
+    ],
+    "test-depends": [
+        "Test",
+        "Test::META"
+    ],
+    "version" : "0.0.1"
 }
