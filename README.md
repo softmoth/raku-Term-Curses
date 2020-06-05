@@ -31,3 +31,10 @@ Then, other items:
 - Expose much more of the library API
 - Port example programs from other curses libs
 - More docs
+
+## LICENSE
+
+Released under the
+[Artistic License 2.0](http://www.perlfoundation.org/artistic_license_2_0).
+
+Copyright © 2012-2020 Tim Siegel `<github:softmoth>`
